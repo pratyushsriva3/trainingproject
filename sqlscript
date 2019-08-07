@@ -1,0 +1,70 @@
+create database stock_exchange;
+use stock_exchange;
+CREATE TABLE `sectors` (
+  `id` int(11) auto_increment,
+  `sector_name` varchar(45) DEFAULT NULL,
+ `brief` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+desc sectors;
+
+insert into sectors(sector_name,brief)  values('software','applications software');
+select * from sectors;
+
+CREATE TABLE `stockexchange` (
+  `stockexchange_id` int(12) auto_increment,
+  `stockExchange_name`  varchar(45) not null,
+  
+`brief` varchar(45) DEFAULT NULL,
+  `contactaddress` varchar(45) DEFAULT NULL,
+ 
+ `remarks` varchar(45) DEFAULT NULL,
+  
+PRIMARY KEY (`stockexchange_id`)
+);
+
+ 
+CREATE TABLE `company` (
+  `company_code` int(12) NOT NULL,
+  `company_Name` varchar(45) DEFAULT NULL,
+  
+`turnover` decimal(10,0) DEFAULT NULL,
+  `ceo` varchar(45) DEFAULT NULL,
+  
+`boardofdirectors` varchar(100) DEFAULT NULL,
+  `sector_id` int(11) DEFAULT NULL,
+ 
+ `breifwriteup` varchar(200) DEFAULT NULL,
+  `stock_Code` int(11) DEFAULT NULL,
+ 
+ PRIMARY KEY (`company_code`),
+    FOREIGN KEY (sector_id) REFERENCES sectors(id)
+);
+
+CREATE TABLE `ipo_planned` (
+  `id` int(12) NOT NULL,
+  `Company_code` int(12) DEFAULT NULL,
+  
+`Stock_exchange` int(12) DEFAULT NULL,
+  `price_per_share` decimal(10,0) DEFAULT NULL,
+ 
+ `total_no_of_shares` int(11) DEFAULT NULL,
+  `open_date_time` date DEFAULT NULL,
+  
+`remarks` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+ FOREIGN KEY (Company_code) REFERENCES company(company_code),
+ FOREIGN KEY (Stock_exchange) REFERENCES stockexchange(stockexchange_id));
+ 
+ insert into company values(1011, 'cognizant',987,'aaa','aaa',1,'aaa',777);
+
+CREATE TABLE `stock_price_details` (
+  `Company_code` int(12) NOT NULL,
+  `Stock_Exchange` int(12) DEFAULT NULL,
+ 
+ `Current_price` decimal(10,0) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `Time` date DEFAULT NULL,
+ 
+ PRIMARY KEY (`Company_code`)
+) 
