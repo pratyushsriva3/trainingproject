@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  
+
+
+    <bean id="LoginServiceBean" class="Services.LoginService"></bean>
+     <bean id="AdminServiceBean" class="Services.AdminService"></bean>
+      <bean id="UserServiceBean" class="Services.UserService"></bean>
+    
+     <bean id="CompanyDaoBean" class="DataAccessObject.CompanyDao"></bean>
+     <bean id="UserDaoBean" class="DataAccessObject.UserDao"></bean>
+   
+
+
+</beans>
